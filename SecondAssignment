@@ -1,0 +1,47 @@
+int digitalValue = 0;       // placeholder value to allow digitalValue to be recognized later
+char my_str[] = "Reset";    // sets the string "my_str" as "Hello" - string code borrowed from https://startingelectronics.org/software/arduino/learn-to-program-course/18-strings/
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600);     // sets the buades value
+  pinMode(13, OUTPUT);    // sets pin 13 as the output pin
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  digitalWrite(13, HIGH);           // turn the LED on (HIGH is the voltage level)
+  
+  digitalValue = digitalRead(13);   // assigns to digitalValue the current state of pin 13 as 0, off or 1, on. Output code borrowed from https://www.arduino.cc/reference/en/language/functions/communication/serial/println/
+  
+  if (digitalValue == 1) {          // checks for the current value of digitalValue
+
+    Serial.print("LED er tændt");   // if the current value matches 1, prints "LED er tændt"
+  }
+  else {                            // otherwise
+
+    Serial.print("LED er slukket"); // prints "LED er slukket" if current value of digitalValue does not equal 1
+  } 
+  
+  delay(1000);                      // wait for a second
+  
+  digitalWrite(13, LOW);            // turn the LED off by making the voltage LOW
+  
+  digitalValue = digitalRead(13);   // assings to digitalValue the current state of pin 13 as 0, off or 1, on.
+  
+  if (digitalValue == 1) {          // checks for the current value of digitalValue
+
+    Serial.print("LED er tændt");   // if the current value matches 1, prints "LED er tændt"
+  }
+  else {                            // otherwise
+
+    Serial.print("LED er slukket"); // prints "LED er slukket" if current value of digitalValue does not equal 1
+  }
+  
+  delay(1000);                      // wait for a second
+
+  Serial.println(my_str);           // prints the string in serial monitor
+  
+  delay(2000);                      // waits for 2 seconds
+
+}
